@@ -13,7 +13,7 @@ var jsSources = [
 	'components/scripts/template.js',
 	];
 
-var saasSources = ['components/saas/style.scss'];
+var sassSources = ['components/sass/style.scss'];
 
 gulp.task('coffee', function() {
 	gulp.src(coffeeSources)
@@ -31,9 +31,9 @@ gulp.task('js', function() {
 });
 
 gulp.task('compass', function() {
-	gulp.src(saasSources)
+	gulp.src(sassSources)
 		.pipe(compass({
-			saas: 'components/saas',
+			sass: 'components/sass',
 			image: 'builds/development/images',
 			style: 'expanded'
 		})
@@ -41,4 +41,4 @@ gulp.task('compass', function() {
 		.pipe(gulp.dest('builds/development/css'))
 });
 
-gulp.task('all', ['coffee', 'js', 'compass']);
+gulp.task('default', ['coffee', 'js', 'compass']);
