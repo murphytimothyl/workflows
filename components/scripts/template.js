@@ -1,3 +1,4 @@
+//template.js
 $(function() {
   var Mustache = require('mustache');
 
