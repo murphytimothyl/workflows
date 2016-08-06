@@ -12,14 +12,20 @@ var env
 	, sassSources
 	, htmlSources
 	, jsonSources
-	, outputDir;
+	, outputDir
+	, sassStyle
+	, configFile;
 
 env = process.env.NODE_ENV || 'development';
 
 if (env ==='development') {
 	outputDir = 'builds/development/';
+	sassStyle = 'expanded';
+	//configFile = 'config.rb';
 } else {
 	outputDir = 'builds/production/';
+	sassStyle = 'compressed';
+	//configFile = 'configprod.rb';
 }
 
 coffeeSources = ['components/coffee/tagline.coffee'];
@@ -55,7 +61,8 @@ gulp.task('compass', function() {
 		.pipe(compass({
 			sass: 'components/sass',
 			image: outputDir + '/images',
-			style: 'expanded'
+			style: sassStyle
+			//config_file: configFile
 		})
 		.on('error', gutil.log))
 		.pipe(gulp.dest(outputDir + '/css'))
